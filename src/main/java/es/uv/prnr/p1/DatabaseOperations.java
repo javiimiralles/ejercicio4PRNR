@@ -33,8 +33,23 @@ public class DatabaseOperations {
         }
     }
 
-    // TODO modificar
     public static void updateEmployeeFirstName(Connection con, Employee e) {
+        PreparedStatement stmt = null;
+        try {
+            stmt = con.prepareStatement("UPDATE employees SET first_name = ? WHERE emp_no = ?");
+            stmt.setString(1, e.getFirstName());
+            stmt.setInt(2, e.getId());
+            stmt.executeUpdate();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        } finally {
+            try {
+                if (stmt != null)
+                    stmt.close();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        }
 
     }
 

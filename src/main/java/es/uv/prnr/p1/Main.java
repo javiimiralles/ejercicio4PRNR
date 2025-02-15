@@ -8,8 +8,8 @@ public class Main {
         Employee e = new Employee(1, "Edgar", "Cood", LocalDate.of(1923,8,19), LocalDate.now(), Employee.Gender.M);
         Connection conn = DatabaseConnector.connect();
         DatabaseOperations.insertEmployee(conn, e);
-        //DatabaseOperations.setFirstName("Edgar F.");
-		//DatabaseOperations.updateEmployeeFirstName(e);
+        e.setFirstName("Edgar F.");
+		DatabaseOperations.updateEmployeeFirstName(conn, e);
 		//DatabaseOperations.deleteEmployee(e);
 		//DatabaseOperations.getEmployeesByTitle("Engineer");
 		//DatabaseOperations.getDepartmentManagers("Development");
